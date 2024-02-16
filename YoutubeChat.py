@@ -11,4 +11,4 @@ chat = pytchat.create(video_id="1MvwYMZZc_0")
 
 while chat.is_alive():
     for c in chat.get().sync_items():
-        print(f"YOUTUBE | {c.datetime} | {c.author.name}: {c.message}")
+        logging.info(f"YOUTUBE | {c.datetime} | {c.author.name}: {c.message}")

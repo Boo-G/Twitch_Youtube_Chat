@@ -44,7 +44,7 @@ def main():
                     # Extract the message and time from the response
                     parts = resp.split(":", 2)
                     user = parts[1].split("!", 1)[0]
-                    message = parts[2]
+                    message = parts[2].strip()
                     time_received = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
                     # Log the message with the configured logger
