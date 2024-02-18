@@ -17,7 +17,7 @@ server = 'irc.chat.twitch.tv'
 port = 6667
 nickname = 'Hsboog'
 token = 'oauth:yni8ods6axw67z3q7ovrgbgkqq2axs'
-channel = '#Trick2g'
+channel = '#b0aty'
 
 
 def main():
@@ -42,7 +42,6 @@ def main():
                 # Check if the response contains the PRIVMSG format
                 if "PRIVMSG" in resp:
                 
-                    print("MIDDLE")
                     # Extract the message and time from the response
                     parts = resp.split(":", 2)
                     user = parts[1].split("!", 1)[0]
@@ -50,7 +49,7 @@ def main():
                     time_received = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
                     # Log the message with the configured logger
-                    print(f"TWITCH | {time_received} | {user}: {message}")
+                    logging.info(f"TWITCH | {time_received} | {user}: {message}")
 
 
     except KeyboardInterrupt:
