@@ -1,8 +1,10 @@
 import tkinter as tk
 from tkinter import *
-import threading, YoutubeChat, TwitchChat
+import threading, YoutubeChat, TwitchChat, os
 
-
+# TODO: need to kill the running threads before removing the file
+# def disconnect():
+#     os.remove("chat.log")
 
 
 def search_channels():
@@ -21,7 +23,6 @@ def search_channels():
     youtube_thread = threading.Thread(target=YoutubeChat.main, args=(youtube_channel,))
     youtube_thread.start()
 
-    
 
     # Open and display the chat log file
     load_latest_messages()
@@ -83,6 +84,10 @@ youtube_entry.grid(row=3, column=0)
 # Create search button
 search_button = tk.Button(frame, text="Search", command=search_channels)
 search_button.grid(row=4, column=0)
+
+# Create disconnect button
+# disconnect_button = tk.Button(frame, text="Disconnect", command=disconnect)
+# disconnect_button.grid(row=5, column=0)
 
 
 """
