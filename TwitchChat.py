@@ -1,11 +1,11 @@
 import socket
 import logging
-from emoji import demojize
+import os
 from datetime import datetime
 
-logging.basicConfig(level=logging.DEBUG,
+logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s — %(message)s',
-                    datefmt='%Y-%m-%d_%H:%M:%S',
+                    datefmt='%H:%M:%S',
                     handlers=[logging.FileHandler('chat.log', encoding='utf-8')])
 
 
@@ -16,8 +16,8 @@ Get token here: https://twitchapps.com/tmi/
 server = 'irc.chat.twitch.tv'
 port = 6667
 nickname = 'Hsboog'
-token = 'oauth:yni8ods6axw67z3q7ovrgbgkqq2axs'
-channel = '#b0aty'
+token = os.getenv('TWITCH_API_KEY')
+channel = '#esfandtv'
 
 
 def main():
@@ -49,7 +49,8 @@ def main():
                     time_received = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
                     # Log the message with the configured logger
-                    logging.info(f"TWITCH | {time_received} | {user}: {message}")
+                    print(f"TWITCH | {user}: {message}")
+                    logging.info(f"TWITCH | {user}: {message}")
 
 
     except KeyboardInterrupt:
