@@ -25,7 +25,7 @@ def main(twitchChat):
     sock.connect((server, port))
     sock.send(f"PASS {token}\r\n".encode('utf-8'))
     sock.send(f"NICK {nickname}\r\n".encode('utf-8'))
-    sock.send(f"JOIN {str(twitchChat)}\r\n".encode('utf-8'))
+    sock.send(f"JOIN {'#'+str(twitchChat)}\r\n".encode('utf-8'))
 
     try:
         while True:
