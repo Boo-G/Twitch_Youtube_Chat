@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO,
                     handlers=[logging.FileHandler('chat.log', encoding='utf-8')])
 
 def main(youtubeChannel):
-    chat = pytchat.create(video_id=str(youtubeChannel))
+    chat = pytchat.create(video_id=str(youtubeChannel),interruptable=False)
 
     while chat.is_alive():
         for c in chat.get().sync_items():
@@ -20,3 +20,4 @@ def main(youtubeChannel):
 
         # for c in chat.get().items:
         #     print(c.json())
+

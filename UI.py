@@ -21,8 +21,6 @@ def search_channels():
     youtube_thread = threading.Thread(target=YoutubeChat.main, args=(youtube_channel,))
     youtube_thread.start()
 
-    # Wait for the YoutubeChat thread to complete
-    # twitch_thread.join()
     
 
     # Open and display the chat log file
