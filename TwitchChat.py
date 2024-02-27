@@ -20,12 +20,12 @@ token = os.getenv('TWITCH_API_KEY')
 channel = '#esfandtv'
 
 
-def main():
+def main(twitchChat):
     sock = socket.socket()
     sock.connect((server, port))
     sock.send(f"PASS {token}\r\n".encode('utf-8'))
     sock.send(f"NICK {nickname}\r\n".encode('utf-8'))
-    sock.send(f"JOIN {channel}\r\n".encode('utf-8'))
+    sock.send(f"JOIN {str(twitchChat)}\r\n".encode('utf-8'))
 
     try:
         while True:

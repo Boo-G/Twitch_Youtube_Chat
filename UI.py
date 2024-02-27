@@ -1,9 +1,11 @@
 import tkinter as tk
 from tkinter import *
-import os
+import threading, YoutubeChat, TwitchChat
+
+
+
 
 def search_channels():
-    global chat_text 
     twitch_channel = twitch_entry.get()
     youtube_channel = youtube_entry.get()
     print("Searching Twitch channel:", twitch_channel)
@@ -11,6 +13,16 @@ def search_channels():
 
     # if TwitchChat.main(twitch_channel) and YoutubeChat.main(youtube_channel):
     #     do the stuff
+
+    # Create a threads for fetching each chat
+    twitch_thread = threading.Thread(target=TwitchChat.main, args=(twitch_channel,))
+    twitch_thread.start()
+
+    youtube_thread = threading.Thread(target=YoutubeChat.main, args=(youtube_channel,))
+    youtube_thread.start()
+
+    # Wait for the YoutubeChat thread to complete
+    # twitch_thread.join()
     
 
     # Open and display the chat log file
